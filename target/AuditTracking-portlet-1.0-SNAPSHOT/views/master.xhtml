@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+	    <h:messages globalOnly="true" layout="table" />
+	    <br />
+	        <span class="initaudit_tab">
+	            <h:outputText value=" " />
+	        </span>
+	        <ui:repeat value="#{initAuditBacking.initAudits}" var="initaudit">
+	            <h:panelGroup rendered="#{initaudit.viewable}">
+	            	<span class="#{(initaudit.initAuditId == initAuditBacking.selectedInitAudit.initAuditId) ? 'initaudit_tab_active' : 'initaudit_tab'}">
+	                <h:outputText rendered="#{initaudit.initAuditId == initAuditBacking.selectedInitAudit.initAuditId}" value="#{initaudit.initAuditName}_#{initaudit.startDate}_#{initaudit.endDate} " />	                	              
+	                <h:commandLink action="#{initAuditBacking.select(initaudit)}" immediate="true" rendered="#{initaudit.initAuditId != initAuditBacking.selectedInitAudit.initAuditId}" value="#{initaudit.initAuditName}">
+	                    <f:ajax render="@all" />
+	                </h:commandLink>
+	                </span>
+	            </h:panelGroup>	            
+	        </ui:repeat>
+	        <span class="initaudit_tab">
+	            <h:outputText value=" " />
+	        </span>
+	    <br />
+	    <br />
+	    <h:commandButton action="#{initAuditBacking.add}" rendered="#{initAuditBacking.hasAddPersmission}" 
+	    	styleClass="btn btn-default" value=" #{i18n['add-initaudit']} ">
+		    <f:ajax render="@all" />
+		</h:commandButton>
+		<h:commandButton action="#{auditPlanBacking.add}" rendered="#{auditPlanBacking.hasAddPermission}" 
+			styleClass="btn btn-default" value=" #{i18n['add-auditplan']} ">
+		    <f:ajax render="@all" />
+		</h:commandButton>
+		<br />   
+		<br />
+		<c:choose>
+	        <c:when test="#{empty initAuditBacking.auditPlans}">
+	            <h:outputText value="#{i18n['no-auditplan-yet']}" />
+	        </c:when>
+	        <c:otherwise>
+	            <h:dataTable styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell "
+	                value="#{initAuditBacking.auditPlans}" var="auditplan">
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Name']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.planName}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Auditor']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.auditor}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Audit Team']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.auditTeam}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Interviewes']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.interviewes}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Plan date']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.planDate}" >
+	                    		<f:convertDateTime pattern="MM/dd/yyyy"/>
+	                    	</h:outputText>
+	                    </h:panelGroup>	                    	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Act date']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.actDate}" >
+	                    		<f:convertDateTime pattern="MM/dd/yyyy"/>
+	                    	</h:outputText>
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Status']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.status}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Note']}" /></f:facet>
+	                    <h:panelGroup rendered="#{auditplan.viewable}">
+	                    	<h:outputText value="#{auditplan.note}" />
+	                    </h:panelGroup>	                    
+	                </h:column>
+	                
+	           </h:dataTable>
+	       </c:otherwise>
+	   </c:choose>
+	</h:form>
+</f:view>

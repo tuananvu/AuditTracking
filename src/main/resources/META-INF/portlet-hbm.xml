@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="syneren.qms.audit.model.AuditCheckItem" />
+	<import class="syneren.qms.audit.model.AuditFinding" />
+	<import class="syneren.qms.audit.model.AuditPlan" />
+	<import class="syneren.qms.audit.model.AuditReport" />
+	<import class="syneren.qms.audit.model.CorrectiveAction" />
+	<import class="syneren.qms.audit.model.InitAudit" />
+	<class name="syneren.qms.audit.model.impl.AuditCheckItemImpl" table="AuditCheckItem">
+		<cache usage="read-write" />
+		<id name="CheckItemId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="CheckItemName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Question" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Answer" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Complie" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="Evidence" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Outcome" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="AuditId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="syneren.qms.audit.model.impl.AuditFindingImpl" table="AuditFinding">
+		<cache usage="read-write" />
+		<id name="FindingId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="FindingName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="PlanId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="Type" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="DueDate" type="org.hibernate.type.TimestampType" />
+		<property name="Status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FollowupDue" type="org.hibernate.type.TimestampType" />
+		<property name="FollowupStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="syneren.qms.audit.model.impl.AuditPlanImpl" table="AuditPlan">
+		<cache usage="read-write" />
+		<id name="PlanId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="PlanName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="InitAuditId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="Auditor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="AuditTeam" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Interviewes" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="PlanDate" type="org.hibernate.type.TimestampType" />
+		<property name="ActDate" type="org.hibernate.type.TimestampType" />
+		<property name="Status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="syneren.qms.audit.model.impl.AuditReportImpl" table="AuditReport">
+		<cache usage="read-write" />
+		<id name="AuditId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="AuditName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="InitAuditId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="Auditor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="syneren.qms.audit.model.impl.CorrectiveActionImpl" table="CorrectiveAction">
+		<cache usage="read-write" />
+		<id name="ActionId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="ActionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FindingId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="Note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="syneren.qms.audit.model.impl.InitAuditImpl" table="InitAudit">
+		<cache usage="read-write" />
+		<id name="InitAuditId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="InitAuditName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="StartDate" type="org.hibernate.type.TimestampType" />
+		<property name="EndDate" type="org.hibernate.type.TimestampType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+</hibernate-mapping>

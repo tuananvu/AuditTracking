@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+	    <c:choose>
+	        <c:when test="#{empty initAuditBacking.selectedAuditPlan.planName}">
+	            <h3>#{i18n['new-auditplan']}</h3>
+	        </c:when>
+	        <c:otherwise>
+	            <h3>#{i18n['editing']} #{initAuditBacking.selectedAuditPlan.planName}</h3>
+	        </c:otherwise>
+	    </c:choose>
+	    <aui:fieldset>
+		    <aui:field id="auditPlanNameField" label="#{i18n['name']}">
+		        <h:message for="auditPlanName" />
+		        <h:inputText id="auditPlanName" required="true" value="#{initAuditBacking.selectedAuditPlan.planName}">
+		            <f:ajax render="auditPlanNameField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditPlanAuditorField" label="#{i18n['Auditor']}">
+		        <h:message for="auditPlanAuditor" />
+		        <h:inputText id="auditPlanAuditor" required="true" value="#{initAuditBacking.selectedAuditPlan.auditor}">
+		            	<f:ajax render="auditPlanAuditorField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditPlanAuditTeamField" label="#{i18n['Audit Team']}">
+		        <h:message for="auditPlanAuditTeam" />
+		        <h:inputText id="auditPlanAuditTeam" required="true" value="#{initAuditBacking.selectedAuditPlan.auditTeam}">
+		            	<f:ajax render="auditPlanAuditTeamField" />
+		        </h:inputText>
+		    </aui:field>		
+		    <aui:field id="auditPlanInterviewesField" label="#{i18n['Interviewes']}">
+		        <h:message for="auditPlanInterviewes" />
+		        <h:inputText id="auditPlanInterviewes" required="true" value="#{initAuditBacking.selectedAuditPlan.interviewes}">
+		            	<f:ajax render="auditPlanInterviewesField" />
+		        </h:inputText>
+		    </aui:field>		
+		    <aui:field id="auditPlanPlanDateField" label="#{i18n['Plan Date']}">
+		        <h:message for="auditPlanPlanDate" />
+		        <h:inputText id="auditPlanPlanDate" required="true" value="#{initAuditBacking.selectedAuditPlan.planDate}">
+		            	<f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>		
+		     <aui:field id="auditPlanActDateField" label="#{i18n['Act Date']}">
+		        <h:message for="auditPlanActDate" />
+		        <h:inputText id="auditPlanActDate" required="true" value="#{initAuditBacking.selectedAuditPlan.actDate}">
+		            	<f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>		
+		    <aui:field id="auditPlanStatusField" label="#{i18n['Status']}">
+		        <h:message for="auditPlanStatus" />
+		        <h:inputText id="auditPlanStatus" required="true" value="#{initAuditBacking.selectedAuditPlan.status}">
+		            	<f:ajax render="auditPlanStatusField" />
+		        </h:inputText>
+		    </aui:field>		
+		    <aui:field id="auditPlanNoteField" label="#{i18n['Note']}">
+		        <h:message for="auditPlanNote" />
+		        <h:inputText id="auditPlanNote" required="true" value="#{initAuditBacking.selectedAuditPlan.note}">
+		            	<f:ajax render="auditPlanNoteField" />
+		        </h:inputText>
+		    </aui:field>						    
+		</aui:fieldset>
+		<h:commandButton action="#{auditPlanBacking.save}" styleClass="btn btn-default" value="#{i18n['save']}">
+	        <f:ajax execute="@form" render="@all" />
+	    </h:commandButton>
+	    <h:commandButton action="#{auditPlanBacking.cancel}" immediate="true" styleClass="btn btn-default" value="#{i18n['cancel']}">
+	        <f:ajax render="@all" />
+	    </h:commandButton>
+    </h:form>
+</f:view>

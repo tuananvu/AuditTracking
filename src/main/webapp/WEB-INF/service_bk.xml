@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="syneren.qms.audit">
+	<author>anguyen</author>
+	<namespace>audit</namespace>
+    <entity name="InitAudit" local-service="true" remote-service="false">
+        <column name="InitAuditId" type="long" primary="true"></column>
+        <column name="InitAuditName" type="String"></column>
+        <column name="StartDate" type="Date"></column>
+        <column name="EndDate" type="Date"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="AuditId" return-type="Collection">
+            <finder-column name="InitAuditId"></finder-column>
+        </finder>
+    </entity>
+    <entity local-service="true" name="AuditPlan" remote-service="false">
+        <column name="PlanID" type="long"></column>
+        <column name="PlanName" type="String"></column>
+        <column name="InitAuditId" type="long"></column>
+        <column name="Auditor" type="String"></column>
+        <column name="AuditTeam" type="String"></column>
+        <column name="Interviewes" type="String"></column>
+        <column name="PlanDate" type="Date"></column>
+        <column name="ActDate" type="Date"></column>
+        <column name="Status" type="String"></column>
+        <column name="Note" type="String"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="PlanId" return-type="Collection">
+            <finder-column name="PlanId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="AuditFinding" remote-service="false" local-service="true">
+        <column name="FindingId" type="long" primary="true"></column>
+        <column name="FindingName" type="String"></column>
+        <column name="PlanId" type="long"></column>
+        <column name="Type" type="String"></column>
+        <column name="DueDate" type="Date"></column>
+        <column name="Status" type="String"></column>
+        <column name="FollowupDue" type="Date"></column>
+        <column name="FollowupStatus" type="String"></column>
+        <column name="Note" type="String"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="FindingId" return-type="Collection">
+            <finder-column name="FindingId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="CorrectiveAction" local-service="true" remote-service="false">
+        <column name="ActionId" type="long" primary="true"></column>
+        <column name="ActionName" type="String"></column>
+        <column name="FindingId" type="long"></column>
+        <column name="Note" type="String"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="ActionId" return-type="Collection">
+            <finder-column name="ActionId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="AuditReport" local-service="true" remote-service="false">
+        <column name="AuditId" type="long" primary="true"></column>
+        <column name="AuditName" type="String"></column>
+        <column name="InitAuditId" type="long"></column>
+        <column name="Auditor" type="String"></column>
+        <column name="Note" type="String"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="AuditId" return-type="Collection">
+            <finder-column name="AuditId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="AuditCheckItem" local-service="true" remote-service="false">
+        <column name="CheckItemId" type="long" primary="true"></column>
+        <column name="CheckItemName" type="String"></column>
+        <column name="Question" type="String"></column>
+        <column name="Answer" type="String"></column>
+        <column name="Complie" type="boolean"></column>
+        <column name="Evidence" type="String"></column>
+        <column name="Outcome" type="String"></column>
+        <column name="companyId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="AuditId" type="long"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="CheckItem" return-type="Collection">
+            <finder-column name="CheckItem"></finder-column>
+        </finder>
+    </entity>
+</service-builder>

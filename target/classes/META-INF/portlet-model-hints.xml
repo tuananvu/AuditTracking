@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="syneren.qms.audit.model.AuditCheckItem">
+		<field name="CheckItemId" type="long" />
+		<field name="CheckItemName" type="String" />
+		<field name="Question" type="String" />
+		<field name="Answer" type="String" />
+		<field name="Complie" type="boolean" />
+		<field name="Evidence" type="String" />
+		<field name="Outcome" type="String" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="AuditId" type="long" />
+	</model>
+	<model name="syneren.qms.audit.model.AuditFinding">
+		<field name="FindingId" type="long" />
+		<field name="FindingName" type="String" />
+		<field name="PlanId" type="long" />
+		<field name="Type" type="String" />
+		<field name="DueDate" type="Date" />
+		<field name="Status" type="String" />
+		<field name="FollowupDue" type="Date" />
+		<field name="FollowupStatus" type="String" />
+		<field name="Note" type="String" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="syneren.qms.audit.model.AuditPlan">
+		<field name="PlanId" type="long" />
+		<field name="PlanName" type="String" />
+		<field name="InitAuditId" type="long" />
+		<field name="Auditor" type="String" />
+		<field name="AuditTeam" type="String" />
+		<field name="Interviewes" type="String" />
+		<field name="PlanDate" type="Date" />
+		<field name="ActDate" type="Date" />
+		<field name="Status" type="String" />
+		<field name="Note" type="String" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="syneren.qms.audit.model.AuditReport">
+		<field name="AuditId" type="long" />
+		<field name="AuditName" type="String" />
+		<field name="InitAuditId" type="long" />
+		<field name="Auditor" type="String" />
+		<field name="Note" type="String" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="syneren.qms.audit.model.CorrectiveAction">
+		<field name="ActionId" type="long" />
+		<field name="ActionName" type="String" />
+		<field name="FindingId" type="long" />
+		<field name="Note" type="String" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="syneren.qms.audit.model.InitAudit">
+		<field name="InitAuditId" type="long" />
+		<field name="InitAuditName" type="String" />
+		<field name="StartDate" type="Date" />
+		<field name="EndDate" type="Date" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+</model-hints>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:form>
+	    <c:choose>
+	        <c:when test="#{empty initAuditBacking.selectedInitAudit.initAuditName}">
+	            <h3>#{i18n['new-initaudit']}</h3>
+	        </c:when>
+	        <c:otherwise>
+	            <h3>#{i18n['editing']} #{initAuditBacking.selectedInitAudit.initAuditName}</h3>
+	        </c:otherwise>
+	    </c:choose>
+	    <aui:fieldset>
+	        <aui:field id="initAuditNameField" label="#{i18n['name']}">
+	            <h:message for="initAuditName" />
+	            <h:inputText id="initAuditName" required="true" value="#{initAuditBacking.selectedInitAudit.initAuditName}">
+	                <f:ajax render="initAuditNameField" />
+	            </h:inputText>
+	        </aui:field>
+	        <aui:field id="initAuditStartDateField" label="#{i18n['Start date']} (MM/dd/yyyy)">
+	            <h:message for="initAuditStartDate" />
+	            <h:inputText id="initAuditStartDate" required="true" value="#{initAuditBacking.selectedInitAudit.startDate}">
+	                <f:convertDateTime pattern="MM/dd/yyyy"/>
+	            </h:inputText>
+	        </aui:field>
+	        <aui:field id="initAuditEndDateField" label="#{i18n['End date']} (MM/dd/yyyy)">
+	            <h:message for="initAuditEndDate" />
+	            <h:inputText id="initAuditEndDate" required="true" value="#{initAuditBacking.selectedInitAudit.endDate}">
+	            
+	                <f:convertDateTime pattern="MM/dd/yyyy"/>
+	            </h:inputText>
+	        </aui:field>
+	    </aui:fieldset>
+	    <h:commandButton action="#{initAuditBacking.save}" styleClass="btn btn-default" value="#{i18n['save']}">
+	        <f:ajax execute="@form" render="@all" />
+	    </h:commandButton>
+	    <h:commandButton action="#{initAuditBacking.cancel}" styleClass="btn btn-default" value="#{i18n['cancel']}">
+	        <f:ajax render="@all" />
+	    </h:commandButton>
+	</h:form>
+</f:view>

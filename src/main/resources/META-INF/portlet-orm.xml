@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="syneren.qms.audit.model.impl.AuditCheckItemModelImpl">
+		<attributes>
+			<id name="CheckItemId" />
+			<basic name="CheckItemName" />
+			<basic name="Question" />
+			<basic name="Answer" />
+			<basic name="Complie" />
+			<basic name="Evidence" />
+			<basic name="Outcome" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="AuditId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="syneren.qms.audit.model.impl.AuditFindingModelImpl">
+		<attributes>
+			<id name="FindingId" />
+			<basic name="FindingName" />
+			<basic name="PlanId" />
+			<basic name="Type" />
+			<basic name="DueDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="Status" />
+			<basic name="FollowupDue">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="FollowupStatus" />
+			<basic name="Note" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="syneren.qms.audit.model.impl.AuditPlanModelImpl">
+		<attributes>
+			<id name="PlanId" />
+			<basic name="PlanName" />
+			<basic name="InitAuditId" />
+			<basic name="Auditor" />
+			<basic name="AuditTeam" />
+			<basic name="Interviewes" />
+			<basic name="PlanDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="ActDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="Status" />
+			<basic name="Note" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="syneren.qms.audit.model.impl.AuditReportModelImpl">
+		<attributes>
+			<id name="AuditId" />
+			<basic name="AuditName" />
+			<basic name="InitAuditId" />
+			<basic name="Auditor" />
+			<basic name="Note" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="syneren.qms.audit.model.impl.CorrectiveActionModelImpl">
+		<attributes>
+			<id name="ActionId" />
+			<basic name="ActionName" />
+			<basic name="FindingId" />
+			<basic name="Note" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="syneren.qms.audit.model.impl.InitAuditModelImpl">
+		<attributes>
+			<id name="InitAuditId" />
+			<basic name="InitAuditName" />
+			<basic name="StartDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="EndDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="syneren.qms.audit.model.impl.AuditCheckItemImpl" name="AuditCheckItem">
+		<table name="AuditCheckItem" />
+		<attributes />
+	</entity>
+	<entity class="syneren.qms.audit.model.impl.AuditFindingImpl" name="AuditFinding">
+		<table name="AuditFinding" />
+		<attributes />
+	</entity>
+	<entity class="syneren.qms.audit.model.impl.AuditPlanImpl" name="AuditPlan">
+		<table name="AuditPlan" />
+		<attributes />
+	</entity>
+	<entity class="syneren.qms.audit.model.impl.AuditReportImpl" name="AuditReport">
+		<table name="AuditReport" />
+		<attributes />
+	</entity>
+	<entity class="syneren.qms.audit.model.impl.CorrectiveActionImpl" name="CorrectiveAction">
+		<table name="CorrectiveAction" />
+		<attributes />
+	</entity>
+	<entity class="syneren.qms.audit.model.impl.InitAuditImpl" name="InitAudit">
+		<table name="InitAudit" />
+		<attributes />
+	</entity>
+</entity-mappings>

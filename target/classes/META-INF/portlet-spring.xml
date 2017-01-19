@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="syneren.qms.audit.service.AuditCheckItemLocalService" class="syneren.qms.audit.service.impl.AuditCheckItemLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.AuditCheckItemPersistence" class="syneren.qms.audit.service.persistence.AuditCheckItemPersistenceImpl" parent="basePersistence" />
+	<bean id="syneren.qms.audit.service.AuditFindingLocalService" class="syneren.qms.audit.service.impl.AuditFindingLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.AuditFindingPersistence" class="syneren.qms.audit.service.persistence.AuditFindingPersistenceImpl" parent="basePersistence" />
+	<bean id="syneren.qms.audit.service.AuditPlanLocalService" class="syneren.qms.audit.service.impl.AuditPlanLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.AuditPlanPersistence" class="syneren.qms.audit.service.persistence.AuditPlanPersistenceImpl" parent="basePersistence" />
+	<bean id="syneren.qms.audit.service.AuditReportLocalService" class="syneren.qms.audit.service.impl.AuditReportLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.AuditReportPersistence" class="syneren.qms.audit.service.persistence.AuditReportPersistenceImpl" parent="basePersistence" />
+	<bean id="syneren.qms.audit.service.CorrectiveActionLocalService" class="syneren.qms.audit.service.impl.CorrectiveActionLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.CorrectiveActionPersistence" class="syneren.qms.audit.service.persistence.CorrectiveActionPersistenceImpl" parent="basePersistence" />
+	<bean id="syneren.qms.audit.service.InitAuditLocalService" class="syneren.qms.audit.service.impl.InitAuditLocalServiceImpl" />
+	<bean id="syneren.qms.audit.service.persistence.InitAuditPersistence" class="syneren.qms.audit.service.persistence.InitAuditPersistenceImpl" parent="basePersistence" />
+</beans>
