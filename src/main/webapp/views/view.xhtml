@@ -17,6 +17,9 @@
 			<c:when test="#{initAuditBacking.editingAuditPlan}">
 				<ui:include src="/views/auditplan.xhtml"></ui:include>
 			</c:when>
+			<c:when test="#{initAuditBacking.editingAuditFinding}">
+				<ui:include src="/views/auditfinding.xhtml"></ui:include>
+			</c:when>
 			<c:otherwise>
 				<ui:include src="/views/master.xhtml"></ui:include>				
 			</c:otherwise>

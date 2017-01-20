@@ -263,6 +263,23 @@ public class AuditFindingLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static java.util.List<syneren.qms.audit.model.AuditFinding> getAuditFindings(
+        long groupId, long PlanId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditFindings(groupId, PlanId);
+    }
+
+    public static java.util.List<syneren.qms.audit.model.AuditFinding> getAuditFindings(
+        long groupId, long PlanId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditFindings(groupId, PlanId, start, end);
+    }
+
+    public static int getAuditFindingsCount(long groupId, long PlanId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditFindingsCount(groupId, PlanId);
+    }
+
     public static void clearService() {
         _service = null;
     }

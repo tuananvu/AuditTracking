@@ -3,6 +3,7 @@ create index IX_965810E4 on AuditCheckItem (groupId);
 
 create index IX_F0208900 on AuditFinding (FindingId);
 create index IX_F4626396 on AuditFinding (groupId);
+create index IX_7642EA4E on AuditFinding (groupId, PlanId);
 
 create index IX_DC99B02 on AuditPlan (PlanId);
 create index IX_5F7A1FA0 on AuditPlan (groupId);

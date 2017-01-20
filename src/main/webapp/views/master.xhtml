@@ -115,10 +115,34 @@
 				            	<h:outputText value=" #{i18n['permissions']} " />
 				       		</h:outputLink>
 				        </h:panelGroup>
-				        
+				        <h:commandButton action="#{auditPlanBacking.select(auditplan)}" 
+							styleClass="btn btn-default" value=" #{i18n['view-auditfindings']} ">
+						    <f:ajax render="@all" />
+						</h:commandButton>						
+						 <h:commandButton action="#{auditFindingBacking.add(auditplan)}" 
+							styleClass="btn btn-default" value=" #{i18n['add-auditfinding']} ">
+						    <f:ajax render="@all" />
+						</h:commandButton>
 				    </h:column>
 	           </h:dataTable>
 	       </c:otherwise>
 	   </c:choose>
+	  
+		<c:choose>
+			<c:when test="#{empty auditPlanBacking.auditFindings}">
+	            <h:outputText value="#{i18n['no-auditfinding-yet']}" />
+	        </c:when>
+	        <c:otherwise>
+	        	<h:dataTable styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell "
+	                value="#{auditPlanBacking.auditFindings}" var="auditfinding">
+	                 <h:column>
+	                    <f:facet name="header"><h:outputText value="#{i18n['Name']}" /></f:facet>
+	                   
+	                    	<h:outputText value="#{auditfinding.findingName}" />
+	                             
+	                </h:column>
+	            </h:dataTable>
+	        </c:otherwise>
+		</c:choose>
 	</h:form>
 </f:view>

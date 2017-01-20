@@ -71,6 +71,10 @@
         <finder name="FindingId" return-type="Collection">
             <finder-column name="FindingId"></finder-column>
         </finder>
+        <finder name="G_P" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="PlanId"></finder-column>
+        </finder>
     </entity>
     <entity name="CorrectiveAction" table="CorrectiveAction" local-service="true" remote-service="false">
         <column name="ActionId" type="long" primary="true"></column>

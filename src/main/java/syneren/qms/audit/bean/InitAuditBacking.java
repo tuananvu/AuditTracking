@@ -22,6 +22,18 @@ public class InitAuditBacking extends AbstractBacking {
 	public static final String MODEL = "syneren.qms.audit.model";
 	private Boolean hasAddPermission;
 	private Boolean hasViewPermission;
+	public static final String DEFAULT_INITAUDIT_NAME = "Sample";
+	private InitAudit originalInitAudit;
+	private InitAudit selectedInitAudit;
+	private List<InitAudit> initAudits;
+	private AuditPlan selectedAuditPlan;
+	private List<AuditPlan> auditPlans;
+	private boolean editingInitAudit;
+	private boolean editingAuditPlan;
+	private boolean editingAuditFinding;
+	
+	Date date=new Date();
+	
 	public Boolean getHasAddPersmission() {
 		if(hasAddPermission == null){
 			LiferayFacesContext liferayFacesContext = LiferayFacesContext.getInstance();
@@ -133,17 +145,13 @@ public class InitAuditBacking extends AbstractBacking {
 	}
 	public void setEditingAuditPlan(boolean editingAuditPlan) {
 		this.editingAuditPlan = editingAuditPlan;
+	}	
+	public boolean isEditingAuditFinding() {
+		return editingAuditFinding;
 	}
-	public static final String DEFAULT_INITAUDIT_NAME = "Sample";
-	private InitAudit originalInitAudit;
-	private InitAudit selectedInitAudit;
-	private List<InitAudit> initAudits;
-	private AuditPlan selectedAuditPlan;
-	private List<AuditPlan> auditPlans;
-	private boolean editingInitAudit;
-	private boolean editingAuditPlan;
-	Date date=new Date();
-	
+	public void setEditingAuditFinding(boolean editingAuditFinding) {
+		this.editingAuditFinding = editingAuditFinding;
+	}
 	public void add(){
 		setOriginalInitAudit(getSelectedInitAudit());
 		InitAudit initAudit = new InitAudit(InitAuditUtil.create(0L));
@@ -187,9 +195,10 @@ public class InitAuditBacking extends AbstractBacking {
 		
 		//Force InitAudit and AuditPlan to reload
 		setInitAudits(null);
-		setAuditPlans(null);
+		setAuditPlans(null);		
 		editingAuditPlan = false;
 		editingInitAudit = false;
+		editingAuditFinding = false;
 	}
 	public void createSampleInitAudit(){
 		try {
@@ -218,12 +227,20 @@ public class InitAuditBacking extends AbstractBacking {
 		createSampleInitAudit();
 	}
 	public void editInitAudit(){
-		editingAuditPlan = false;
-		editingInitAudit = true;
+		setEditModesToFalse();
+		editingInitAudit = true;		
 	}
 	public void editAuditPlan(){
-		editingAuditPlan = true;
-		editingInitAudit = false;
+		setEditModesToFalse();
+		editingAuditPlan = true;		
 	}
-	
+	public void editAuditFinding(){
+		setEditModesToFalse();
+		editingAuditFinding = true;		
+	}
+	public void setEditModesToFalse(){
+		editingInitAudit = false;
+		editingAuditPlan = false;
+		editingAuditFinding = false;
+	}
 }

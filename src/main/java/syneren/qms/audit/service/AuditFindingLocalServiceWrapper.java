@@ -274,6 +274,27 @@ public class AuditFindingLocalServiceWrapper implements AuditFindingLocalService
             arguments);
     }
 
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditFinding> getAuditFindings(
+        long groupId, long PlanId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditFindingLocalService.getAuditFindings(groupId, PlanId);
+    }
+
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditFinding> getAuditFindings(
+        long groupId, long PlanId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditFindingLocalService.getAuditFindings(groupId, PlanId,
+            start, end);
+    }
+
+    @Override
+    public int getAuditFindingsCount(long groupId, long PlanId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditFindingLocalService.getAuditFindingsCount(groupId, PlanId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

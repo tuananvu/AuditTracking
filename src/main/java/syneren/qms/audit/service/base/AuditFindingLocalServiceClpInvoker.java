@@ -45,6 +45,14 @@ public class AuditFindingLocalServiceClpInvoker {
     private String[] _methodParameterTypes52;
     private String _methodName53;
     private String[] _methodParameterTypes53;
+    private String _methodName58;
+    private String[] _methodParameterTypes58;
+    private String _methodName59;
+    private String[] _methodParameterTypes59;
+    private String _methodName60;
+    private String[] _methodParameterTypes60;
+    private String _methodName61;
+    private String[] _methodParameterTypes61;
 
     public AuditFindingLocalServiceClpInvoker() {
         _methodName0 = "addAuditFinding";
@@ -136,6 +144,24 @@ public class AuditFindingLocalServiceClpInvoker {
         _methodName53 = "setBeanIdentifier";
 
         _methodParameterTypes53 = new String[] { "java.lang.String" };
+
+        _methodName58 = "getAuditFindings";
+
+        _methodParameterTypes58 = new String[] { "long", "long" };
+
+        _methodName59 = "getAuditFindings";
+
+        _methodParameterTypes59 = new String[] { "long", "long", "int", "int" };
+
+        _methodName60 = "addAuditFinding";
+
+        _methodParameterTypes60 = new String[] {
+                "syneren.qms.audit.model.AuditFinding"
+            };
+
+        _methodName61 = "getAuditFindingsCount";
+
+        _methodParameterTypes61 = new String[] { "long", "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -237,6 +263,31 @@ public class AuditFindingLocalServiceClpInvoker {
             AuditFindingLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
+        }
+
+        if (_methodName58.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes58, parameterTypes)) {
+            return AuditFindingLocalServiceUtil.getAuditFindings(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue());
+        }
+
+        if (_methodName59.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes59, parameterTypes)) {
+            return AuditFindingLocalServiceUtil.getAuditFindings(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue(),
+                ((Integer) arguments[2]).intValue(),
+                ((Integer) arguments[3]).intValue());
+        }
+
+        if (_methodName60.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes60, parameterTypes)) {
+            return AuditFindingLocalServiceUtil.addAuditFinding((syneren.qms.audit.model.AuditFinding) arguments[0]);
+        }
+
+        if (_methodName61.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes61, parameterTypes)) {
+            return AuditFindingLocalServiceUtil.getAuditFindingsCount(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue());
         }
 
         throw new UnsupportedOperationException();

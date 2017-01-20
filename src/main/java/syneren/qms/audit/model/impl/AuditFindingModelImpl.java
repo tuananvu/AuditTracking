@@ -79,7 +79,8 @@ public class AuditFindingModelImpl extends BaseModelImpl<AuditFinding>
                 "value.object.column.bitmask.enabled.syneren.qms.audit.model.AuditFinding"),
             true);
     public static long FINDINGID_COLUMN_BITMASK = 1L;
-    public static long GROUPID_COLUMN_BITMASK = 2L;
+    public static long PLANID_COLUMN_BITMASK = 2L;
+    public static long GROUPID_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.syneren.qms.audit.model.AuditFinding"));
     private static ClassLoader _classLoader = AuditFinding.class.getClassLoader();
@@ -91,6 +92,8 @@ public class AuditFindingModelImpl extends BaseModelImpl<AuditFinding>
     private boolean _setOriginalFindingId;
     private String _FindingName;
     private long _PlanId;
+    private long _originalPlanId;
+    private boolean _setOriginalPlanId;
     private String _Type;
     private Date _DueDate;
     private String _Status;
@@ -293,7 +296,19 @@ public class AuditFindingModelImpl extends BaseModelImpl<AuditFinding>
 
     @Override
     public void setPlanId(long PlanId) {
+        _columnBitmask |= PLANID_COLUMN_BITMASK;
+
+        if (!_setOriginalPlanId) {
+            _setOriginalPlanId = true;
+
+            _originalPlanId = _PlanId;
+        }
+
         _PlanId = PlanId;
+    }
+
+    public long getOriginalPlanId() {
+        return _originalPlanId;
     }
 
     @Override
@@ -541,6 +556,10 @@ public class AuditFindingModelImpl extends BaseModelImpl<AuditFinding>
         auditFindingModelImpl._originalFindingId = auditFindingModelImpl._FindingId;
 
         auditFindingModelImpl._setOriginalFindingId = false;
+
+        auditFindingModelImpl._originalPlanId = auditFindingModelImpl._PlanId;
+
+        auditFindingModelImpl._setOriginalPlanId = false;
 
         auditFindingModelImpl._originalGroupId = auditFindingModelImpl._groupId;
 
