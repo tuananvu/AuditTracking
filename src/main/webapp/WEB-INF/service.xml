@@ -110,6 +110,10 @@
         <finder name="AuditId" return-type="Collection">
             <finder-column name="AuditId"></finder-column>
         </finder>
+        <finder name="G_I" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="InitAuditId"></finder-column>
+        </finder>
     </entity>
     <entity name="AuditCheckItem" table="AuditCheckItem" local-service="true" remote-service="false">
         <column name="CheckItemId" type="long" primary="true"></column>
@@ -130,6 +134,10 @@
         </finder>
         <finder name="CheckItemId" return-type="Collection">
             <finder-column name="CheckItemId"></finder-column>
+        </finder>
+        <finder name="G_A" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="AuditId"></finder-column>
         </finder>
     </entity>
 </service-builder>

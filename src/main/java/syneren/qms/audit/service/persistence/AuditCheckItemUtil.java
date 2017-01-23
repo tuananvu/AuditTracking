@@ -405,6 +405,181 @@ public class AuditCheckItemUtil {
     }
 
     /**
+    * Returns all the audit check items where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @return the matching audit check items
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<syneren.qms.audit.model.AuditCheckItem> findByG_A(
+        long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().findByG_A(groupId, AuditId);
+    }
+
+    /**
+    * Returns a range of all the audit check items where groupId = &#63; and AuditId = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link syneren.qms.audit.model.impl.AuditCheckItemModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param start the lower bound of the range of audit check items
+    * @param end the upper bound of the range of audit check items (not inclusive)
+    * @return the range of matching audit check items
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<syneren.qms.audit.model.AuditCheckItem> findByG_A(
+        long groupId, long AuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().findByG_A(groupId, AuditId, start, end);
+    }
+
+    /**
+    * Returns an ordered range of all the audit check items where groupId = &#63; and AuditId = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link syneren.qms.audit.model.impl.AuditCheckItemModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param start the lower bound of the range of audit check items
+    * @param end the upper bound of the range of audit check items (not inclusive)
+    * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+    * @return the ordered range of matching audit check items
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<syneren.qms.audit.model.AuditCheckItem> findByG_A(
+        long groupId, long AuditId, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .findByG_A(groupId, AuditId, start, end, orderByComparator);
+    }
+
+    /**
+    * Returns the first audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching audit check item
+    * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a matching audit check item could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static syneren.qms.audit.model.AuditCheckItem findByG_A_First(
+        long groupId, long AuditId,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            syneren.qms.audit.NoSuchAuditCheckItemException {
+        return getPersistence()
+                   .findByG_A_First(groupId, AuditId, orderByComparator);
+    }
+
+    /**
+    * Returns the first audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching audit check item, or <code>null</code> if a matching audit check item could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static syneren.qms.audit.model.AuditCheckItem fetchByG_A_First(
+        long groupId, long AuditId,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByG_A_First(groupId, AuditId, orderByComparator);
+    }
+
+    /**
+    * Returns the last audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching audit check item
+    * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a matching audit check item could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static syneren.qms.audit.model.AuditCheckItem findByG_A_Last(
+        long groupId, long AuditId,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            syneren.qms.audit.NoSuchAuditCheckItemException {
+        return getPersistence()
+                   .findByG_A_Last(groupId, AuditId, orderByComparator);
+    }
+
+    /**
+    * Returns the last audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching audit check item, or <code>null</code> if a matching audit check item could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static syneren.qms.audit.model.AuditCheckItem fetchByG_A_Last(
+        long groupId, long AuditId,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByG_A_Last(groupId, AuditId, orderByComparator);
+    }
+
+    /**
+    * Returns the audit check items before and after the current audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param CheckItemId the primary key of the current audit check item
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the previous, current, and next audit check item
+    * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a audit check item with the primary key could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static syneren.qms.audit.model.AuditCheckItem[] findByG_A_PrevAndNext(
+        long CheckItemId, long groupId, long AuditId,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            syneren.qms.audit.NoSuchAuditCheckItemException {
+        return getPersistence()
+                   .findByG_A_PrevAndNext(CheckItemId, groupId, AuditId,
+            orderByComparator);
+    }
+
+    /**
+    * Removes all the audit check items where groupId = &#63; and AuditId = &#63; from the database.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @throws SystemException if a system exception occurred
+    */
+    public static void removeByG_A(long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        getPersistence().removeByG_A(groupId, AuditId);
+    }
+
+    /**
+    * Returns the number of audit check items where groupId = &#63; and AuditId = &#63;.
+    *
+    * @param groupId the group ID
+    * @param AuditId the audit ID
+    * @return the number of matching audit check items
+    * @throws SystemException if a system exception occurred
+    */
+    public static int countByG_A(long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().countByG_A(groupId, AuditId);
+    }
+
+    /**
     * Caches the audit check item in the entity cache if it is enabled.
     *
     * @param auditCheckItem the audit check item

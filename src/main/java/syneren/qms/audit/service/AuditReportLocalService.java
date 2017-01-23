@@ -236,4 +236,18 @@ public interface AuditReportLocalService extends BaseLocalService,
     public java.lang.Object invokeMethod(java.lang.String name,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public int getAuditReportsCount(long groupId, long initAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

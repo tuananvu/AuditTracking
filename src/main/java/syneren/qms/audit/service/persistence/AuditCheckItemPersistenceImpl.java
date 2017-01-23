@@ -116,6 +116,29 @@ public class AuditCheckItemPersistenceImpl extends BasePersistenceImpl<AuditChec
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCheckItemId",
             new String[] { Long.class.getName() });
     private static final String _FINDER_COLUMN_CHECKITEMID_CHECKITEMID_2 = "auditCheckItem.CheckItemId = ?";
+    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_G_A = new FinderPath(AuditCheckItemModelImpl.ENTITY_CACHE_ENABLED,
+            AuditCheckItemModelImpl.FINDER_CACHE_ENABLED,
+            AuditCheckItemImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+            "findByG_A",
+            new String[] {
+                Long.class.getName(), Long.class.getName(),
+                
+            Integer.class.getName(), Integer.class.getName(),
+                OrderByComparator.class.getName()
+            });
+    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A = new FinderPath(AuditCheckItemModelImpl.ENTITY_CACHE_ENABLED,
+            AuditCheckItemModelImpl.FINDER_CACHE_ENABLED,
+            AuditCheckItemImpl.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_A",
+            new String[] { Long.class.getName(), Long.class.getName() },
+            AuditCheckItemModelImpl.GROUPID_COLUMN_BITMASK |
+            AuditCheckItemModelImpl.AUDITID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_G_A = new FinderPath(AuditCheckItemModelImpl.ENTITY_CACHE_ENABLED,
+            AuditCheckItemModelImpl.FINDER_CACHE_ENABLED, Long.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_A",
+            new String[] { Long.class.getName(), Long.class.getName() });
+    private static final String _FINDER_COLUMN_G_A_GROUPID_2 = "auditCheckItem.groupId = ? AND ";
+    private static final String _FINDER_COLUMN_G_A_AUDITID_2 = "auditCheckItem.AuditId = ?";
     private static final String _SQL_SELECT_AUDITCHECKITEM = "SELECT auditCheckItem FROM AuditCheckItem auditCheckItem";
     private static final String _SQL_SELECT_AUDITCHECKITEM_WHERE = "SELECT auditCheckItem FROM AuditCheckItem auditCheckItem WHERE ";
     private static final String _SQL_COUNT_AUDITCHECKITEM = "SELECT COUNT(auditCheckItem) FROM AuditCheckItem auditCheckItem";
@@ -916,6 +939,492 @@ public class AuditCheckItemPersistenceImpl extends BasePersistenceImpl<AuditChec
     }
 
     /**
+     * Returns all the audit check items where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @return the matching audit check items
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<AuditCheckItem> findByG_A(long groupId, long AuditId)
+        throws SystemException {
+        return findByG_A(groupId, AuditId, QueryUtil.ALL_POS,
+            QueryUtil.ALL_POS, null);
+    }
+
+    /**
+     * Returns a range of all the audit check items where groupId = &#63; and AuditId = &#63;.
+     *
+     * <p>
+     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link syneren.qms.audit.model.impl.AuditCheckItemModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+     * </p>
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param start the lower bound of the range of audit check items
+     * @param end the upper bound of the range of audit check items (not inclusive)
+     * @return the range of matching audit check items
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<AuditCheckItem> findByG_A(long groupId, long AuditId,
+        int start, int end) throws SystemException {
+        return findByG_A(groupId, AuditId, start, end, null);
+    }
+
+    /**
+     * Returns an ordered range of all the audit check items where groupId = &#63; and AuditId = &#63;.
+     *
+     * <p>
+     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link syneren.qms.audit.model.impl.AuditCheckItemModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+     * </p>
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param start the lower bound of the range of audit check items
+     * @param end the upper bound of the range of audit check items (not inclusive)
+     * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+     * @return the ordered range of matching audit check items
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<AuditCheckItem> findByG_A(long groupId, long AuditId,
+        int start, int end, OrderByComparator orderByComparator)
+        throws SystemException {
+        boolean pagination = true;
+        FinderPath finderPath = null;
+        Object[] finderArgs = null;
+
+        if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+                (orderByComparator == null)) {
+            pagination = false;
+            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A;
+            finderArgs = new Object[] { groupId, AuditId };
+        } else {
+            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_G_A;
+            finderArgs = new Object[] {
+                    groupId, AuditId,
+                    
+                    start, end, orderByComparator
+                };
+        }
+
+        List<AuditCheckItem> list = (List<AuditCheckItem>) FinderCacheUtil.getResult(finderPath,
+                finderArgs, this);
+
+        if ((list != null) && !list.isEmpty()) {
+            for (AuditCheckItem auditCheckItem : list) {
+                if ((groupId != auditCheckItem.getGroupId()) ||
+                        (AuditId != auditCheckItem.getAuditId())) {
+                    list = null;
+
+                    break;
+                }
+            }
+        }
+
+        if (list == null) {
+            StringBundler query = null;
+
+            if (orderByComparator != null) {
+                query = new StringBundler(4 +
+                        (orderByComparator.getOrderByFields().length * 3));
+            } else {
+                query = new StringBundler(4);
+            }
+
+            query.append(_SQL_SELECT_AUDITCHECKITEM_WHERE);
+
+            query.append(_FINDER_COLUMN_G_A_GROUPID_2);
+
+            query.append(_FINDER_COLUMN_G_A_AUDITID_2);
+
+            if (orderByComparator != null) {
+                appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+                    orderByComparator);
+            } else
+             if (pagination) {
+                query.append(AuditCheckItemModelImpl.ORDER_BY_JPQL);
+            }
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(groupId);
+
+                qPos.add(AuditId);
+
+                if (!pagination) {
+                    list = (List<AuditCheckItem>) QueryUtil.list(q,
+                            getDialect(), start, end, false);
+
+                    Collections.sort(list);
+
+                    list = new UnmodifiableList<AuditCheckItem>(list);
+                } else {
+                    list = (List<AuditCheckItem>) QueryUtil.list(q,
+                            getDialect(), start, end);
+                }
+
+                cacheResult(list);
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, list);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return list;
+    }
+
+    /**
+     * Returns the first audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the first matching audit check item
+     * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a matching audit check item could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public AuditCheckItem findByG_A_First(long groupId, long AuditId,
+        OrderByComparator orderByComparator)
+        throws NoSuchAuditCheckItemException, SystemException {
+        AuditCheckItem auditCheckItem = fetchByG_A_First(groupId, AuditId,
+                orderByComparator);
+
+        if (auditCheckItem != null) {
+            return auditCheckItem;
+        }
+
+        StringBundler msg = new StringBundler(6);
+
+        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+        msg.append("groupId=");
+        msg.append(groupId);
+
+        msg.append(", AuditId=");
+        msg.append(AuditId);
+
+        msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+        throw new NoSuchAuditCheckItemException(msg.toString());
+    }
+
+    /**
+     * Returns the first audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the first matching audit check item, or <code>null</code> if a matching audit check item could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public AuditCheckItem fetchByG_A_First(long groupId, long AuditId,
+        OrderByComparator orderByComparator) throws SystemException {
+        List<AuditCheckItem> list = findByG_A(groupId, AuditId, 0, 1,
+                orderByComparator);
+
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the last audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the last matching audit check item
+     * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a matching audit check item could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public AuditCheckItem findByG_A_Last(long groupId, long AuditId,
+        OrderByComparator orderByComparator)
+        throws NoSuchAuditCheckItemException, SystemException {
+        AuditCheckItem auditCheckItem = fetchByG_A_Last(groupId, AuditId,
+                orderByComparator);
+
+        if (auditCheckItem != null) {
+            return auditCheckItem;
+        }
+
+        StringBundler msg = new StringBundler(6);
+
+        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+        msg.append("groupId=");
+        msg.append(groupId);
+
+        msg.append(", AuditId=");
+        msg.append(AuditId);
+
+        msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+        throw new NoSuchAuditCheckItemException(msg.toString());
+    }
+
+    /**
+     * Returns the last audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the last matching audit check item, or <code>null</code> if a matching audit check item could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public AuditCheckItem fetchByG_A_Last(long groupId, long AuditId,
+        OrderByComparator orderByComparator) throws SystemException {
+        int count = countByG_A(groupId, AuditId);
+
+        if (count == 0) {
+            return null;
+        }
+
+        List<AuditCheckItem> list = findByG_A(groupId, AuditId, count - 1,
+                count, orderByComparator);
+
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the audit check items before and after the current audit check item in the ordered set where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param CheckItemId the primary key of the current audit check item
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the previous, current, and next audit check item
+     * @throws syneren.qms.audit.NoSuchAuditCheckItemException if a audit check item with the primary key could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public AuditCheckItem[] findByG_A_PrevAndNext(long CheckItemId,
+        long groupId, long AuditId, OrderByComparator orderByComparator)
+        throws NoSuchAuditCheckItemException, SystemException {
+        AuditCheckItem auditCheckItem = findByPrimaryKey(CheckItemId);
+
+        Session session = null;
+
+        try {
+            session = openSession();
+
+            AuditCheckItem[] array = new AuditCheckItemImpl[3];
+
+            array[0] = getByG_A_PrevAndNext(session, auditCheckItem, groupId,
+                    AuditId, orderByComparator, true);
+
+            array[1] = auditCheckItem;
+
+            array[2] = getByG_A_PrevAndNext(session, auditCheckItem, groupId,
+                    AuditId, orderByComparator, false);
+
+            return array;
+        } catch (Exception e) {
+            throw processException(e);
+        } finally {
+            closeSession(session);
+        }
+    }
+
+    protected AuditCheckItem getByG_A_PrevAndNext(Session session,
+        AuditCheckItem auditCheckItem, long groupId, long AuditId,
+        OrderByComparator orderByComparator, boolean previous) {
+        StringBundler query = null;
+
+        if (orderByComparator != null) {
+            query = new StringBundler(6 +
+                    (orderByComparator.getOrderByFields().length * 6));
+        } else {
+            query = new StringBundler(3);
+        }
+
+        query.append(_SQL_SELECT_AUDITCHECKITEM_WHERE);
+
+        query.append(_FINDER_COLUMN_G_A_GROUPID_2);
+
+        query.append(_FINDER_COLUMN_G_A_AUDITID_2);
+
+        if (orderByComparator != null) {
+            String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+            if (orderByConditionFields.length > 0) {
+                query.append(WHERE_AND);
+            }
+
+            for (int i = 0; i < orderByConditionFields.length; i++) {
+                query.append(_ORDER_BY_ENTITY_ALIAS);
+                query.append(orderByConditionFields[i]);
+
+                if ((i + 1) < orderByConditionFields.length) {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(WHERE_GREATER_THAN_HAS_NEXT);
+                    } else {
+                        query.append(WHERE_LESSER_THAN_HAS_NEXT);
+                    }
+                } else {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(WHERE_GREATER_THAN);
+                    } else {
+                        query.append(WHERE_LESSER_THAN);
+                    }
+                }
+            }
+
+            query.append(ORDER_BY_CLAUSE);
+
+            String[] orderByFields = orderByComparator.getOrderByFields();
+
+            for (int i = 0; i < orderByFields.length; i++) {
+                query.append(_ORDER_BY_ENTITY_ALIAS);
+                query.append(orderByFields[i]);
+
+                if ((i + 1) < orderByFields.length) {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(ORDER_BY_ASC_HAS_NEXT);
+                    } else {
+                        query.append(ORDER_BY_DESC_HAS_NEXT);
+                    }
+                } else {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(ORDER_BY_ASC);
+                    } else {
+                        query.append(ORDER_BY_DESC);
+                    }
+                }
+            }
+        } else {
+            query.append(AuditCheckItemModelImpl.ORDER_BY_JPQL);
+        }
+
+        String sql = query.toString();
+
+        Query q = session.createQuery(sql);
+
+        q.setFirstResult(0);
+        q.setMaxResults(2);
+
+        QueryPos qPos = QueryPos.getInstance(q);
+
+        qPos.add(groupId);
+
+        qPos.add(AuditId);
+
+        if (orderByComparator != null) {
+            Object[] values = orderByComparator.getOrderByConditionValues(auditCheckItem);
+
+            for (Object value : values) {
+                qPos.add(value);
+            }
+        }
+
+        List<AuditCheckItem> list = q.list();
+
+        if (list.size() == 2) {
+            return list.get(1);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Removes all the audit check items where groupId = &#63; and AuditId = &#63; from the database.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public void removeByG_A(long groupId, long AuditId)
+        throws SystemException {
+        for (AuditCheckItem auditCheckItem : findByG_A(groupId, AuditId,
+                QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+            remove(auditCheckItem);
+        }
+    }
+
+    /**
+     * Returns the number of audit check items where groupId = &#63; and AuditId = &#63;.
+     *
+     * @param groupId the group ID
+     * @param AuditId the audit ID
+     * @return the number of matching audit check items
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public int countByG_A(long groupId, long AuditId) throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_G_A;
+
+        Object[] finderArgs = new Object[] { groupId, AuditId };
+
+        Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
+                this);
+
+        if (count == null) {
+            StringBundler query = new StringBundler(3);
+
+            query.append(_SQL_COUNT_AUDITCHECKITEM_WHERE);
+
+            query.append(_FINDER_COLUMN_G_A_GROUPID_2);
+
+            query.append(_FINDER_COLUMN_G_A_AUDITID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(groupId);
+
+                qPos.add(AuditId);
+
+                count = (Long) q.uniqueResult();
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, count);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return count.intValue();
+    }
+
+    /**
      * Caches the audit check item in the entity cache if it is enabled.
      *
      * @param auditCheckItem the audit check item
@@ -1160,6 +1669,27 @@ public class AuditCheckItemPersistenceImpl extends BasePersistenceImpl<AuditChec
                 FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CHECKITEMID,
                     args);
                 FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CHECKITEMID,
+                    args);
+            }
+
+            if ((auditCheckItemModelImpl.getColumnBitmask() &
+                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] {
+                        auditCheckItemModelImpl.getOriginalGroupId(),
+                        auditCheckItemModelImpl.getOriginalAuditId()
+                    };
+
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_A, args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A,
+                    args);
+
+                args = new Object[] {
+                        auditCheckItemModelImpl.getGroupId(),
+                        auditCheckItemModelImpl.getAuditId()
+                    };
+
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_A, args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A,
                     args);
             }
         }

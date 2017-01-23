@@ -77,8 +77,9 @@ public class AuditCheckItemModelImpl extends BaseModelImpl<AuditCheckItem>
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.syneren.qms.audit.model.AuditCheckItem"),
             true);
-    public static long CHECKITEMID_COLUMN_BITMASK = 1L;
-    public static long GROUPID_COLUMN_BITMASK = 2L;
+    public static long AUDITID_COLUMN_BITMASK = 1L;
+    public static long CHECKITEMID_COLUMN_BITMASK = 2L;
+    public static long GROUPID_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.syneren.qms.audit.model.AuditCheckItem"));
     private static ClassLoader _classLoader = AuditCheckItem.class.getClassLoader();
@@ -103,6 +104,8 @@ public class AuditCheckItemModelImpl extends BaseModelImpl<AuditCheckItem>
     private Date _createDate;
     private Date _modifiedDate;
     private long _AuditId;
+    private long _originalAuditId;
+    private boolean _setOriginalAuditId;
     private long _columnBitmask;
     private AuditCheckItem _escapedModel;
 
@@ -427,7 +430,19 @@ public class AuditCheckItemModelImpl extends BaseModelImpl<AuditCheckItem>
 
     @Override
     public void setAuditId(long AuditId) {
+        _columnBitmask |= AUDITID_COLUMN_BITMASK;
+
+        if (!_setOriginalAuditId) {
+            _setOriginalAuditId = true;
+
+            _originalAuditId = _AuditId;
+        }
+
         _AuditId = AuditId;
+    }
+
+    public long getOriginalAuditId() {
+        return _originalAuditId;
     }
 
     public long getColumnBitmask() {
@@ -530,6 +545,10 @@ public class AuditCheckItemModelImpl extends BaseModelImpl<AuditCheckItem>
         auditCheckItemModelImpl._originalGroupId = auditCheckItemModelImpl._groupId;
 
         auditCheckItemModelImpl._setOriginalGroupId = false;
+
+        auditCheckItemModelImpl._originalAuditId = auditCheckItemModelImpl._AuditId;
+
+        auditCheckItemModelImpl._setOriginalAuditId = false;
 
         auditCheckItemModelImpl._columnBitmask = 0;
     }

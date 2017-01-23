@@ -44,6 +44,12 @@ public class AuditReportLocalServiceClp implements AuditReportLocalService {
     private String[] _methodParameterTypes16;
     private String _methodName17;
     private String[] _methodParameterTypes17;
+    private String _methodName19;
+    private String[] _methodParameterTypes19;
+    private String _methodName20;
+    private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
 
     public AuditReportLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -138,6 +144,18 @@ public class AuditReportLocalServiceClp implements AuditReportLocalService {
         _methodName17 = "setBeanIdentifier";
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
+
+        _methodName19 = "getAuditReports";
+
+        _methodParameterTypes19 = new String[] { "long", "long" };
+
+        _methodName20 = "getAuditReports";
+
+        _methodParameterTypes20 = new String[] { "long", "long", "int", "int" };
+
+        _methodName21 = "getAuditReportsCount";
+
+        _methodParameterTypes21 = new String[] { "long", "long" };
     }
 
     @Override
@@ -648,5 +666,88 @@ public class AuditReportLocalServiceClp implements AuditReportLocalService {
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19,
+                    new Object[] { groupId, InitAuditId });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<syneren.qms.audit.model.AuditReport>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
+                    new Object[] { groupId, InitAuditId, start, end });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<syneren.qms.audit.model.AuditReport>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public int getAuditReportsCount(long groupId, long initAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
+                    new Object[] { groupId, initAuditId });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return ((Integer) returnObj).intValue();
     }
 }

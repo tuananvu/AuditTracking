@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 
 import syneren.qms.audit.model.AuditFinding;
 import syneren.qms.audit.service.AuditFindingLocalServiceUtil;
+import syneren.qms.audit.service.AuditPlanLocalServiceUtil;
 import syneren.qms.audit.service.persistence.AuditFindingUtil;
 import syneren.qms.audit.wrappers.AuditPlan;
 
@@ -59,7 +60,26 @@ public class AuditFindingBacking extends AbstractBacking {
 			logger.error(e);
 		}
 		auditPlanBacking.select(auditPlanBacking.getSelectedAuditPlan());
+		//initAuditBacking.select(initAuditBacking.getSelectedInitAudit());		
+	}
+	public void edit(AuditFinding auditFinding){
+		auditPlanBacking.setSelectedAuditFinding(auditFinding);
+		//initAuditBacking.setSelectedAuditPlan(auditPlan);
+		initAuditBacking.editAuditFinding();
+	}
+	public void cancel(){
+		auditPlanBacking.select(auditPlanBacking.getSelectedAuditPlan());
 		//initAuditBacking.select(initAuditBacking.getSelectedInitAudit());
-		
+	}
+	public void delete(AuditFinding auditFinding){
+		try {
+			AuditFindingLocalServiceUtil.deleteAuditFinding(auditFinding);
+			addGlobalSuccessInfoMessage();
+		} catch (Exception e) {
+			addGlobalUnexpectedErrorMessage();
+			logger.error(e);
+		}
+		auditPlanBacking.select(auditPlanBacking.getSelectedAuditPlan());
+		//initAuditBacking.select(initAuditBacking.getSelectedInitAudit());
 	}
 }

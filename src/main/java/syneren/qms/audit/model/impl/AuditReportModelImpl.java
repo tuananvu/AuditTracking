@@ -75,7 +75,8 @@ public class AuditReportModelImpl extends BaseModelImpl<AuditReport>
                 "value.object.column.bitmask.enabled.syneren.qms.audit.model.AuditReport"),
             true);
     public static long AUDITID_COLUMN_BITMASK = 1L;
-    public static long GROUPID_COLUMN_BITMASK = 2L;
+    public static long INITAUDITID_COLUMN_BITMASK = 2L;
+    public static long GROUPID_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.syneren.qms.audit.model.AuditReport"));
     private static ClassLoader _classLoader = AuditReport.class.getClassLoader();
@@ -87,6 +88,8 @@ public class AuditReportModelImpl extends BaseModelImpl<AuditReport>
     private boolean _setOriginalAuditId;
     private String _AuditName;
     private long _InitAuditId;
+    private long _originalInitAuditId;
+    private boolean _setOriginalInitAuditId;
     private String _Auditor;
     private String _Note;
     private long _companyId;
@@ -257,7 +260,19 @@ public class AuditReportModelImpl extends BaseModelImpl<AuditReport>
 
     @Override
     public void setInitAuditId(long InitAuditId) {
+        _columnBitmask |= INITAUDITID_COLUMN_BITMASK;
+
+        if (!_setOriginalInitAuditId) {
+            _setOriginalInitAuditId = true;
+
+            _originalInitAuditId = _InitAuditId;
+        }
+
         _InitAuditId = InitAuditId;
+    }
+
+    public long getOriginalInitAuditId() {
+        return _originalInitAuditId;
     }
 
     @Override
@@ -453,6 +468,10 @@ public class AuditReportModelImpl extends BaseModelImpl<AuditReport>
         auditReportModelImpl._originalAuditId = auditReportModelImpl._AuditId;
 
         auditReportModelImpl._setOriginalAuditId = false;
+
+        auditReportModelImpl._originalInitAuditId = auditReportModelImpl._InitAuditId;
+
+        auditReportModelImpl._setOriginalInitAuditId = false;
 
         auditReportModelImpl._originalGroupId = auditReportModelImpl._groupId;
 

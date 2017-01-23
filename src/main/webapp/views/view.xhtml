@@ -10,19 +10,16 @@
 >
 	<h:head />
 	<h:body>
-		<c:choose>
-			<c:when test="#{initAuditBacking.editingInitAudit}">
-				<ui:include src="/views/initaudit.xhtml" />			
-			</c:when>
-			<c:when test="#{initAuditBacking.editingAuditPlan}">
-				<ui:include src="/views/auditplan.xhtml"></ui:include>
-			</c:when>
-			<c:when test="#{initAuditBacking.editingAuditFinding}">
-				<ui:include src="/views/auditfinding.xhtml"></ui:include>
-			</c:when>
-			<c:otherwise>
-				<ui:include src="/views/master.xhtml"></ui:include>				
-			</c:otherwise>
-		</c:choose>
+	
+		<h:form>
+			<h:commandButton action="plannavigation.xhtml" 
+		    	styleClass="btn btn-default" value=" #{i18n['Audit Plan']} ">
+			    <f:ajax render="@all" />
+			</h:commandButton>
+			<h:commandButton action="reportnavigation.xhtml" 
+		    	styleClass="btn btn-default" value=" #{i18n['Audit Report']} ">
+			    <f:ajax render="@all" />
+			</h:commandButton>			
+		</h:form>
 	</h:body>
 </f:view>

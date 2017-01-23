@@ -271,6 +271,28 @@ public class AuditReportLocalServiceWrapper implements AuditReportLocalService,
             arguments);
     }
 
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditReportLocalService.getAuditReports(groupId, InitAuditId);
+    }
+
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditReport> getAuditReports(
+        long groupId, long InitAuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditReportLocalService.getAuditReports(groupId, InitAuditId,
+            start, end);
+    }
+
+    @Override
+    public int getAuditReportsCount(long groupId, long initAuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditReportLocalService.getAuditReportsCount(groupId,
+            initAuditId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

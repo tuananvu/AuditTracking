@@ -192,7 +192,8 @@ public class InitAuditBacking extends AbstractBacking {
 		else{
 			setSelectedInitAudit(initAudit);
 		}
-		
+		//selectedAuditPlan = null;
+		setSelectedAuditPlan(null);
 		//Force InitAudit and AuditPlan to reload
 		setInitAudits(null);
 		setAuditPlans(null);		

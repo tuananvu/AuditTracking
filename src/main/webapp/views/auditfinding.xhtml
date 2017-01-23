@@ -23,11 +23,47 @@
 		            <f:ajax render="auditFindingNameField" />
 		        </h:inputText>
 		    </aui:field>
+		    <aui:field id="auditFindingTypeField" label="#{i18n['Type']}">
+		        <h:message for="auditFindingType" />
+		        <h:inputText id="auditFindingType" required="true" value="#{auditPlanBacking.selectedAuditFinding.type}">
+		            <f:ajax render="auditFindingTypeField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingDuedateField" label="#{i18n['Due date']} (MM/dd/yyyy)">
+		        <h:message for="auditFindingDuedate" />
+		        <h:inputText id="auditFindingDuedate" required="true" value="#{auditPlanBacking.selectedAuditFinding.dueDate}">
+		            <f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingStatusField" label="#{i18n['Status']}">
+		        <h:message for="auditFindingStatus" />
+		        <h:inputText id="auditFindingStatus" required="true" value="#{auditPlanBacking.selectedAuditFinding.status}">
+		            <f:ajax render="auditFindingStatusField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingFollowdueField" label="#{i18n['Follow due date']} (MM/dd/yyyy)">
+		        <h:message for="auditFindingFollowdue" />
+		        <h:inputText id="auditFindingFollowdue" required="true" value="#{auditPlanBacking.selectedAuditFinding.followupDue}">
+		            <f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingFollowstatusField" label="#{i18n['Follow status']}">
+		        <h:message for="auditFindingFollowstatus" />
+		        <h:inputText id="auditFindingFollowstatus" required="true" value="#{auditPlanBacking.selectedAuditFinding.followupStatus}">
+		            <f:ajax render="auditFindingFollowstatus" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingNoteField" label="#{i18n['Note']}">
+		        <h:message for="auditFindingNote" />
+		        <h:inputText id="auditFindingNote" required="true" value="#{auditPlanBacking.selectedAuditFinding.note}">
+		            <f:ajax render="auditFindingNoteField" />
+		        </h:inputText>
+		    </aui:field>
 		</aui:fieldset> 
 		<h:commandButton action="#{auditFindingBacking.save}" styleClass="btn btn-default" value="#{i18n['save']}">
 	        <f:ajax execute="@form" render="@all" />
 	    </h:commandButton>
-	    <h:commandButton action="#{auditFinding.cancel}" immediate="true" styleClass="btn btn-default" value="#{i18n['cancel']}">
+	    <h:commandButton action="#{auditFindingBacking.cancel}" immediate="true" styleClass="btn btn-default" value="#{i18n['cancel']}">
 	        <f:ajax render="@all" />
 	    </h:commandButton>
     </h:form>
