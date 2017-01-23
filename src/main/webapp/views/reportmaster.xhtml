@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<h:selectOneListbox value="#{initAuditBacking.selectedInitAudit}">
+   			<f:selectItems value="#{initAuditBacking.initAudits}" var="initAudit"
+   			itemLabel="#{initAudit.initAuditName}" itemValue="#{initAudit.initAuditId}" />
+   		</h:selectOneListbox>
+		<h:commandButton action="#{auditReportBacking.add()}" 
+	    	styleClass="btn btn-default" value=" #{i18n['Add Audit Report']} ">
+		    <f:ajax render="@all" />
+		</h:commandButton>
+			
+	</h:form>
+	
+</f:view>

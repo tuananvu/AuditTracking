@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:outputText value="Audit report" />
+	<h:form>
+		 <c:choose>
+	        <c:when test="#{empty auditReportBacking.selectedAuditReport.auditName}">
+	            <h3>#{i18n['new-auditreport']}</h3>
+	        </c:when>
+	        <c:otherwise>
+	            <h3>#{i18n['editing']} #{auditReportBacking.selectedAuditReport.auditName}</h3>
+	        </c:otherwise>
+	    </c:choose>
+	    <aui:fieldset>
+		    <aui:field id="auditReportNameField" label="#{i18n['name']}">
+		        <h:message for="auditReportName" />
+		        <h:inputText id="auditReportName" required="true" value="#{auditReportBacking.selectedAuditReport.auditName}">
+		            <f:ajax render="auditReportNameField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditReportAuditorField" label="#{i18n['Auditor']}">
+		        <h:message for="auditReportAuditor" />
+		        <h:inputText id="auditReportAuditor" required="true" value="#{auditReportBacking.selectedAuditReport.auditor}">
+		            	<f:ajax render="auditReportAuditorField" />
+		        </h:inputText>
+		    </aui:field>
+		</aui:fieldset>
+		<h:commandButton action="#{auditReportBacking.save()}" styleClass="btn btn-default" value="#{i18n['save']}">
+	        <f:ajax execute="@form" render="@all" />
+	    </h:commandButton>
+	    <h:commandButton action="#{auditReportBacking.cancel()}" immediate="true" styleClass="btn btn-default" value="#{i18n['cancel']}">
+	        <f:ajax render="@all" />
+	    </h:commandButton>
+	</h:form>	 
+</f:view>
