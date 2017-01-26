@@ -6,15 +6,18 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:form>
-		<h:selectOneListbox value="#{auditReportBacking.initAuditId}">
+		<h:outputText value="Choose an Audit" />
+		<h:selectOneListbox value="#{auditReportBacking.initAuditId}" onchange="submit()"
+			valueChangeListener="#{auditReportBacking.initAuditChanged}">
    			<f:selectItems value="#{initAuditBacking.initAudits}" var="initAudit"
    			itemLabel="#{initAudit.initAuditName}" itemValue="#{initAudit.initAuditId}" />
-   			<f:ajax event="change" update="@this" />
+   			<!-- <f:ajax event="change" update="@this" />-->
    		</h:selectOneListbox>
-   		<h:commandButton action="#{auditReportBacking.view()}" 
+   		<!-- <h:commandButton action="#{auditReportBacking.view()}" 
 	    	styleClass="btn btn-default" value=" #{i18n['View Audit Reports']} ">
 		    <f:ajax render="@all" />
 		</h:commandButton>
+		-->
 		<h:commandButton action="#{auditReportBacking.add()}" 
 	    	styleClass="btn btn-default" value=" #{i18n['Add Audit Report']} ">	    	     	 
 		    <f:ajax render="@all" />
@@ -22,14 +25,19 @@
 		<h:dataTable styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell"
 	        value="#{auditReportBacking.auditReports}" var="auditreport">
 	         <h:column>
-	            <f:facet name="header"><h:outputText value="#{i18n['Name']}" /></f:facet>	                   
+	            <f:facet name="header"><h:outputText value="#{i18n['Audit Name']}" /></f:facet>	                   
 	            	<h:outputText value="#{auditreport.auditName}" />	                             
 	        </h:column>
 	        <h:column>
 	            <f:facet name="header"><h:outputText value="#{i18n['Auditor']}" /></f:facet>	                   
 	            	<h:outputText value="#{auditreport.auditor}" />	                             
 	        </h:column>	
-	        <h:column>	        
+	         <h:column>
+	            <f:facet name="header"><h:outputText value="#{i18n['Note']}" /></f:facet>	                   
+	            	<h:outputText value="#{auditreport.note}" />	                             
+	        </h:column>	
+	        <h:column>	
+	         	<f:facet name="header"><h:outputText value="Action" /></f:facet>	        
 	        	<h:commandButton action="#{auditReportBacking.select(auditreport)}" 
 					styleClass="btn btn-default" value=" #{i18n['view-auditcheckitems']} ">
 				    <f:ajax render="@all" />
@@ -37,27 +45,52 @@
 				<h:commandButton action="#{auditCheckItemBacking.add(auditreport)}" 
 					styleClass="btn btn-default" value=" #{i18n['add-auditcheckitem']} ">
 				    <f:ajax render="@all" />
-				</h:commandButton></h:column>
+				</h:commandButton>
+				<h:commandButton action="#{auditCheckItemBacking.generateAuditCheckItems(auditreport)}" 
+					styleClass="btn btn-default" value=" #{i18n['generate-auditcheckitems']} ">
+				    <f:ajax render="@all" />
+				</h:commandButton>
+			</h:column>
 		</h:dataTable>
 		<h:dataTable styleClass="table table-bordered table-hover table-striped" rowClasses="table-cell "
 	         value="#{auditReportBacking.auditCheckItems}" var="auditcheckitem">
+	          <h:column>
+	             <f:facet name="header"><h:outputText value="#{i18n['Item']}" /></f:facet>	                   
+	             	<h:outputText value="#{auditcheckitem.checkItemName}" rendered="#{not auditcheckitem.editable}" />
+	             	<h:inputText value="#{auditcheckitem.checkItemName}" rendered="#{auditcheckitem.editable}" />	             		                       
+	         </h:column>
 	         <h:column>
 	             <f:facet name="header"><h:outputText value="#{i18n['Question']}" /></f:facet>	                   
-	             	<h:outputText value="#{auditcheckitem.question}" rendered="#{not auditCheckItemBacking.editable}" />
-	             	<h:inputText value="#{auditcheckitem.question}" rendered="#{auditCheckItemBacking.editable}" />	             		                       
+	             	<h:outputText value="#{auditcheckitem.question}" rendered="#{not auditcheckitem.editable}" />
+	             	<h:inputText value="#{auditcheckitem.question}" rendered="#{auditcheckitem.editable}" />	             		                       
 	         </h:column>
 	         <h:column>
 	             <f:facet name="header"><h:outputText value="#{i18n['Answer']}" /></f:facet>	                   
-	             	<h:outputText value="#{auditcheckitem.answer}" rendered="#{not auditCheckItemBacking.editable}" />	     
-	             	<h:inputText value="#{auditcheckitem.answer}" rendered="#{auditCheckItemBacking.editable}"/>                        
+	             	<h:outputText value="#{auditcheckitem.answer}" rendered="#{not auditcheckitem.editable}" />	     
+	             	<h:inputText value="#{auditcheckitem.answer}" rendered="#{auditcheckitem.editable}"/>                        
+	         </h:column>
+	         <h:column>
+	             <f:facet name="header"><h:outputText value="#{i18n['Complie']}" /></f:facet>	                   
+	             	<h:outputText value="#{auditcheckitem.complie}" rendered="#{not auditcheckitem.editable}" />
+	             	<h:inputText value="#{auditcheckitem.complie}" rendered="#{auditcheckitem.editable}" />	             		                       
+	         </h:column>
+	         <h:column>
+	             <f:facet name="header"><h:outputText value="#{i18n['Evidence']}" /></f:facet>	                   
+	             	<h:outputText value="#{auditcheckitem.evidence}" rendered="#{not auditcheckitem.editable}" />
+	             	<h:inputText value="#{auditcheckitem.evidence}" rendered="#{auditcheckitem.editable}" />	             		                       
+	         </h:column>
+	         <h:column>
+	             <f:facet name="header"><h:outputText value="#{i18n['Outcome']}" /></f:facet>	                   
+	             	<h:outputText value="#{auditcheckitem.outcome}" rendered="#{not auditcheckitem.editable}" />
+	             	<h:inputText value="#{auditcheckitem.outcome}" rendered="#{auditcheckitem.editable}" />	             		                       
 	         </h:column>
 	         <h:column>
 	         	<f:facet name="header">Action</f:facet>
 	         	<h:commandButton value="Edit" action="#{auditCheckItemBacking.edit(auditcheckitem)}" 
-	         		rendered="#{not auditCheckItemBacking.editable}">	         		
+	         		rendered="#{not auditcheckitem.editable}">	         		
 	         		</h:commandButton>
-	         	<h:commandButton value="Save" action="#{auditCheckItemBacking.test()}" 
-	         		rendered="#{auditCheckItemBacking.editable}">
+	         	<h:commandButton value="Save" action="#{auditCheckItemBacking.save(auditcheckitem)}" 
+	         		rendered="#{auditcheckitem.editable}">
 	         		<f:ajax execute="@form" render="@all" />
 	         		</h:commandButton>	         	
 	         </h:column>

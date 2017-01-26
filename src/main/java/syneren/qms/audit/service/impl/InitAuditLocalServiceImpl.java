@@ -7,8 +7,6 @@ import com.liferay.portal.kernel.exception.SystemException;
 
 import syneren.qms.audit.model.InitAudit;
 import syneren.qms.audit.service.base.InitAuditLocalServiceBaseImpl;
-import syneren.qms.audit.service.persistence.InitAuditPersistence;
-
 
 
 /**

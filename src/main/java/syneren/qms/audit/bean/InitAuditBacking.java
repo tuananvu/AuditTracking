@@ -1,5 +1,6 @@
 package syneren.qms.audit.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,11 @@ import com.liferay.faces.portal.context.LiferayFacesContext;
 
 @ManagedBean(name = "initAuditBacking")
 @ViewScoped
-public class InitAuditBacking extends AbstractBacking {
+public class InitAuditBacking extends AbstractBacking implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String MODEL = "syneren.qms.audit.model";
 	private Boolean hasAddPermission;
 	private Boolean hasViewPermission;

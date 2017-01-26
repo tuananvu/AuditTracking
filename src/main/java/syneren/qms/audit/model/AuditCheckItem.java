@@ -17,4 +17,7 @@ public interface AuditCheckItem extends AuditCheckItemModel, PersistedModel {
      *
      * Never modify this interface directly. Add methods to {@link syneren.qms.audit.model.impl.AuditCheckItemImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
      */
+    public boolean isEditable();
+
+    public void setEditable(boolean editable);
 }

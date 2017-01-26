@@ -553,6 +553,16 @@ public class AuditCheckItemWrapper implements AuditCheckItem,
     }
 
     @Override
+    public boolean isEditable() {
+        return _auditCheckItem.isEditable();
+    }
+
+    @Override
+    public void setEditable(boolean editable) {
+        _auditCheckItem.setEditable(editable);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

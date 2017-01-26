@@ -475,6 +475,39 @@ public class AuditCheckItemClp extends BaseModelImpl<AuditCheckItem>
         }
     }
 
+    @Override
+    public boolean isEditable() {
+        try {
+            String methodName = "isEditable";
+
+            Class<?>[] parameterTypes = new Class<?>[] {  };
+
+            Object[] parameterValues = new Object[] {  };
+
+            Boolean returnObj = (Boolean) invokeOnRemoteModel(methodName,
+                    parameterTypes, parameterValues);
+
+            return returnObj;
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(e);
+        }
+    }
+
+    @Override
+    public void setEditable(boolean editable) {
+        try {
+            String methodName = "setEditable";
+
+            Class<?>[] parameterTypes = new Class<?>[] { boolean.class };
+
+            Object[] parameterValues = new Object[] { editable };
+
+            invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(e);
+        }
+    }
+
     public BaseModel<?> getAuditCheckItemRemoteModel() {
         return _auditCheckItemRemoteModel;
     }

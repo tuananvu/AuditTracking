@@ -1,5 +1,6 @@
 package syneren.qms.audit.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -8,7 +9,6 @@ import javax.faces.bean.RequestScoped;
 
 import syneren.qms.audit.model.AuditFinding;
 import syneren.qms.audit.service.AuditFindingLocalServiceUtil;
-import syneren.qms.audit.service.AuditPlanLocalServiceUtil;
 import syneren.qms.audit.service.persistence.AuditFindingUtil;
 import syneren.qms.audit.wrappers.AuditPlan;
 
@@ -16,7 +16,12 @@ import com.liferay.faces.portal.context.LiferayFacesContext;
 
 @ManagedBean(name="auditFindingBacking")
 @RequestScoped
-public class AuditFindingBacking extends AbstractBacking {
+public class AuditFindingBacking extends AbstractBacking implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ManagedProperty(name="initAuditBacking", value="#{initAuditBacking}")
 	protected InitAuditBacking initAuditBacking;
 	

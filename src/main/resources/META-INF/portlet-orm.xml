@@ -163,7 +163,9 @@
 	</mapped-superclass>
 	<entity class="syneren.qms.audit.model.impl.AuditCheckItemImpl" name="AuditCheckItem">
 		<table name="AuditCheckItem" />
-		<attributes />
+		<attributes>
+			<transient name="editable" />
+		</attributes>
 	</entity>
 	<entity class="syneren.qms.audit.model.impl.AuditFindingImpl" name="AuditFinding">
 		<table name="AuditFinding" />

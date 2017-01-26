@@ -6,21 +6,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.event.ValueChangeEvent;
 import com.liferay.faces.portal.context.LiferayFacesContext;
-
 import syneren.qms.audit.model.AuditCheckItem;
-import syneren.qms.audit.model.AuditFinding;
 import syneren.qms.audit.model.AuditReport;
 import syneren.qms.audit.service.AuditCheckItemLocalServiceUtil;
-import syneren.qms.audit.service.AuditFindingLocalServiceUtil;
 import syneren.qms.audit.service.AuditReportLocalServiceUtil;
-import syneren.qms.audit.service.InitAuditLocalServiceUtil;
 import syneren.qms.audit.service.persistence.AuditReportUtil;
-import syneren.qms.audit.wrappers.AuditPlan;
-import syneren.qms.audit.wrappers.InitAudit;
 
 @ManagedBean(name = "auditReportBacking")
 @ViewScoped
@@ -71,6 +65,9 @@ public class AuditReportBacking extends AbstractBacking implements Serializable{
 		}
 		setMode(10);
 	}
+	public void cancel(){
+		setMode(10);
+	}
 	public boolean isAddReportMode() {
 		return addReportMode;
 	}
@@ -88,6 +85,7 @@ public class AuditReportBacking extends AbstractBacking implements Serializable{
 		editReportMode = false;
 		addCheckItemMode = false;
 		editCheckItemMode = false;
+		
 		if(mode == 1){
 			addReportMode = true;
 		}
@@ -114,11 +112,18 @@ public class AuditReportBacking extends AbstractBacking implements Serializable{
 		}
 		
 		//Force InitAudit and AuditPlan to reload
-		auditReports = null;
+		auditReports = null;		
 		auditCheckItems = null;
 		setMode(10);
 	}
-	
+	public void initAuditChanged(ValueChangeEvent e){
+		System.out.println("test initAuditChanged function");
+		initAuditId = (Long) e.getNewValue();		
+		auditReports = null;
+		selectedAuditReport = null;
+		auditCheckItems = null;
+		setMode(10);
+	}
 	public AuditReport getSelectedAuditReport() {				
 		return selectedAuditReport;
 	}

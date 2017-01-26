@@ -16,7 +16,9 @@
 	        <ui:repeat value="#{initAuditBacking.initAudits}" var="initaudit">
 	            <h:panelGroup rendered="#{initaudit.viewable}">
 	            	<span class="#{(initaudit.initAuditId == initAuditBacking.selectedInitAudit.initAuditId) ? 'initaudit_tab_active' : 'initaudit_tab'}">
-	                <h:outputText rendered="#{initaudit.initAuditId == initAuditBacking.selectedInitAudit.initAuditId}" value="#{initaudit.initAuditName}_#{initaudit.startDate}_#{initaudit.endDate} " />	                	              
+	                <h:outputText rendered="#{initaudit.initAuditId == initAuditBacking.selectedInitAudit.initAuditId}" value="#{initaudit.initAuditName} _ #{initaudit.startDate} _ #{initaudit.endDate}" >
+	                	<f:convertDateTime type="date" pattern="MM/dd/yyyy"/>	                	
+	                </h:outputText>	                  	                	              
 	                <h:commandLink action="#{initAuditBacking.select(initaudit)}" immediate="true" rendered="#{initaudit.initAuditId != initAuditBacking.selectedInitAudit.initAuditId}" value="#{initaudit.initAuditName}">
 	                    <f:ajax render="@all" />
 	                </h:commandLink>

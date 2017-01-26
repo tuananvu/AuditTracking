@@ -17,4 +17,11 @@ public class AuditCheckItemImpl extends AuditCheckItemBaseImpl {
      */
     public AuditCheckItemImpl() {
     }
+    public boolean isEditable() {
+		return editable;
+	}
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	private boolean editable;
 }
