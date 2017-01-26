@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:aui="http://liferay.com/faces/aui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+	    <c:choose>
+	        <c:when test="#{empty auditPlanBacking.selectedAuditFinding.findingName}">
+	            <h3>#{i18n['new-auditfinding']}</h3>
+	        </c:when>
+	        <c:otherwise>
+	            <h3>#{i18n['editing']} #{auditPlanBacking.selectedAuditFinding.findingName}</h3>
+	        </c:otherwise>
+	    </c:choose>
+	    <aui:fieldset>
+		    <aui:field id="auditFindingNameField" label="#{i18n['name']}">
+		        <h:message for="auditFindingName" />
+		        <h:inputText id="auditFindingName" required="true" value="#{auditPlanBacking.selectedAuditFinding.findingName}">
+		            <f:ajax render="auditFindingNameField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingTypeField" label="#{i18n['Type']}">
+		        <h:message for="auditFindingType" />
+		        <h:inputText id="auditFindingType" required="true" value="#{auditPlanBacking.selectedAuditFinding.type}">
+		            <f:ajax render="auditFindingTypeField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingDuedateField" label="#{i18n['Due date']} (MM/dd/yyyy)">
+		        <h:message for="auditFindingDuedate" />
+		        <h:inputText id="auditFindingDuedate" required="true" value="#{auditPlanBacking.selectedAuditFinding.dueDate}">
+		            <f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingStatusField" label="#{i18n['Status']}">
+		        <h:message for="auditFindingStatus" />
+		        <h:inputText id="auditFindingStatus" required="true" value="#{auditPlanBacking.selectedAuditFinding.status}">
+		            <f:ajax render="auditFindingStatusField" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingFollowdueField" label="#{i18n['Follow due date']} (MM/dd/yyyy)">
+		        <h:message for="auditFindingFollowdue" />
+		        <h:inputText id="auditFindingFollowdue" required="true" value="#{auditPlanBacking.selectedAuditFinding.followupDue}">
+		            <f:convertDateTime pattern="MM/dd/yyyy"/>
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingFollowstatusField" label="#{i18n['Follow status']}">
+		        <h:message for="auditFindingFollowstatus" />
+		        <h:inputText id="auditFindingFollowstatus" required="true" value="#{auditPlanBacking.selectedAuditFinding.followupStatus}">
+		            <f:ajax render="auditFindingFollowstatus" />
+		        </h:inputText>
+		    </aui:field>
+		    <aui:field id="auditFindingNoteField" label="#{i18n['Note']}">
+		        <h:message for="auditFindingNote" />
+		        <h:inputText id="auditFindingNote" required="true" value="#{auditPlanBacking.selectedAuditFinding.note}">
+		            <f:ajax render="auditFindingNoteField" />
+		        </h:inputText>
+		    </aui:field>
+		</aui:fieldset> 
+		<h:commandButton action="#{auditFindingBacking.save}" styleClass="btn btn-default" value="#{i18n['save']}">
+	        <f:ajax execute="@form" render="@all" />
+	    </h:commandButton>
+	    <h:commandButton action="#{auditFindingBacking.cancel}" immediate="true" styleClass="btn btn-default" value="#{i18n['cancel']}">
+	        <f:ajax render="@all" />
+	    </h:commandButton>
+    </h:form>
+</f:view>
