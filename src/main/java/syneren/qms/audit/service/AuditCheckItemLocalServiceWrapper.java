@@ -276,6 +276,28 @@ public class AuditCheckItemLocalServiceWrapper
             arguments);
     }
 
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditCheckItemLocalService.getAuditCheckItems(groupId, AuditId);
+    }
+
+    @Override
+    public java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditCheckItemLocalService.getAuditCheckItems(groupId, AuditId,
+            start, end);
+    }
+
+    @Override
+    public int getAuditCheckItemsCount(long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _auditCheckItemLocalService.getAuditCheckItemsCount(groupId,
+            AuditId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

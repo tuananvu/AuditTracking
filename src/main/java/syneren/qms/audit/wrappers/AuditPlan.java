@@ -7,7 +7,6 @@ import javax.portlet.PortletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.liferay.faces.portal.component.PermissionsURL;
 import com.liferay.faces.portal.context.LiferayFacesContext;
 import com.liferay.faces.util.jsp.PageContextAdapter;
 import com.liferay.faces.util.jsp.StringJspWriter;

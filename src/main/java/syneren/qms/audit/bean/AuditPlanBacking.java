@@ -139,7 +139,7 @@ public class AuditPlanBacking extends AbstractBacking {
 			try {
 				auditFindings = new ArrayList<AuditFinding>();
 				if(selectedAuditPlan == null){
-					logger.info("getAuditPlans: selectedInitAudit == null ...");
+					logger.info("getAuditFindings: selectedAuditPlan == null ...");
 				}
 				else{
 					List<AuditFinding> list = AuditFindingLocalServiceUtil.getAuditFindings(scopeGroupId, selectedAuditPlan.getPlanId());

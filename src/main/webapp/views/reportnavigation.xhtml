@@ -11,7 +11,12 @@
 		<c:when test="#{auditReportBacking.addReportMode}">
 			<ui:include src="/views/auditreport.xhtml" />			
 		</c:when>
-				
+		<c:when test="#{auditReportBacking.editReportMode}">
+			<ui:include src="/views/auditreport.xhtml" />			
+		</c:when>	
+		<c:when test="#{auditReportBacking.addCheckItemMode}">
+			<ui:include src="/views/auditcheckitem.xhtml" />			
+		</c:when>		
 		<c:otherwise>
 			<ui:include src="/views/reportmaster.xhtml"></ui:include>				
 		</c:otherwise>

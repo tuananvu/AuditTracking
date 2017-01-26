@@ -10,6 +10,7 @@
 		 <c:choose>
 	        <c:when test="#{empty auditReportBacking.selectedAuditReport.auditName}">
 	            <h3>#{i18n['new-auditreport']}</h3>
+	            <h:outputText value="#{auditReportBacking.initAuditId}" />
 	        </c:when>
 	        <c:otherwise>
 	            <h3>#{i18n['editing']} #{auditReportBacking.selectedAuditReport.auditName}</h3>

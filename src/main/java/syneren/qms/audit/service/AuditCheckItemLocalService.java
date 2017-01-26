@@ -240,4 +240,18 @@ public interface AuditCheckItemLocalService extends BaseLocalService,
     public java.lang.Object invokeMethod(java.lang.String name,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public int getAuditCheckItemsCount(long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

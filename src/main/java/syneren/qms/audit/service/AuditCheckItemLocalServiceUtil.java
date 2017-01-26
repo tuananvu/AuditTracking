@@ -263,6 +263,23 @@ public class AuditCheckItemLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditCheckItems(groupId, AuditId);
+    }
+
+    public static java.util.List<syneren.qms.audit.model.AuditCheckItem> getAuditCheckItems(
+        long groupId, long AuditId, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditCheckItems(groupId, AuditId, start, end);
+    }
+
+    public static int getAuditCheckItemsCount(long groupId, long AuditId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAuditCheckItemsCount(groupId, AuditId);
+    }
+
     public static void clearService() {
         _service = null;
     }
